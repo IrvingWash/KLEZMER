@@ -7,26 +7,26 @@ import (
 )
 
 type DirReader struct {
-	path     string
-	contents []string
+	Path     string
+	Contents []string
 }
 
 func New(path string) *DirReader {
 	return &DirReader{
-		path:     path,
-		contents: make([]string, 0),
+		Path:     path,
+		Contents: make([]string, 0),
 	}
 }
 
 func (dirReader *DirReader) Read() {
 	err := filepath.Walk(
-		dirReader.path,
+		dirReader.Path,
 		func(path string, info os.FileInfo, err error) error {
 			if err != nil {
 				return err
 			}
 
-			dirReader.contents = append(dirReader.contents, path)
+			dirReader.Contents = append(dirReader.Contents, path)
 
 			return nil
 		},

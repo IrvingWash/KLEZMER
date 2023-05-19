@@ -1,14 +1,16 @@
 package main
 
 import (
+	"fmt"
+
 	argparser "github.com/IrvingWash/klezmer/arg_parser"
-	dirreader "github.com/IrvingWash/klezmer/utils/dir_reader"
+	musicreader "github.com/IrvingWash/klezmer/music_reader"
 )
 
 func main() {
 	args := argparser.New()
 
-	dirReader := dirreader.New(args.MusicPath)
+	musicReader := musicreader.New(args.MusicPath)
 
-	dirReader.Read()
+	fmt.Println(musicReader.Music)
 }
