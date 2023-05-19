@@ -8,9 +8,9 @@ import (
 func main() {
 	args := argparser.New()
 
-	musicReader := musicreader.New(args.MusicPath)
+	musicReader := musicreader.New(args.GetMusicPath())
 
-	if args.Decide {
+	if args.GetDecide() {
 		musicReader.GetRandom()
 
 		return

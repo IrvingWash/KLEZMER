@@ -8,8 +8,8 @@ import (
 )
 
 type ArgParser struct {
-	MusicPath string
-	Decide    bool
+	musicPath string
+	decide    bool
 }
 
 func New() *ArgParser {
@@ -31,7 +31,15 @@ func New() *ArgParser {
 	}
 
 	return &ArgParser{
-		MusicPath: musicPath,
-		Decide:    decide,
+		musicPath: musicPath,
+		decide:    decide,
 	}
+}
+
+func (argParser *ArgParser) GetMusicPath() string {
+	return argParser.musicPath
+}
+
+func (argParser *ArgParser) GetDecide() bool {
+	return argParser.decide
 }

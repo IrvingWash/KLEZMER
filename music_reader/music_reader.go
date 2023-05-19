@@ -10,7 +10,7 @@ import (
 )
 
 type MusicReader struct {
-	Music []string
+	music []string
 }
 
 func New(path string) *MusicReader {
@@ -21,21 +21,21 @@ func New(path string) *MusicReader {
 	music := convertDirContents(*dirReader)
 
 	return &MusicReader{
-		Music: music,
+		music: music,
 	}
 }
 
 func (mr *MusicReader) GetRandom() {
 	rand.Seed(time.Now().Unix())
 
-	fmt.Println(mr.Music[rand.Intn(len(mr.Music))])
+	fmt.Println(mr.music[rand.Intn(len(mr.music))])
 }
 
 func convertDirContents(dirReader dirreader.DirReader) []string {
 	music := make([]string, 0)
 
-	for _, dir := range dirReader.Contents {
-		if dir == dirReader.Path {
+	for _, dir := range dirReader.GetContents() {
+		if dir == dirReader.GetPath() {
 			continue
 		}
 
