@@ -1,3 +1,3 @@
-module github.com/IrvingWash/klemzer
+module github.com/IrvingWash/klezmer
 
 go 1.19

@@ -1,5 +1,9 @@
 package main
 
+import argparser "github.com/IrvingWash/klezmer/arg_parser"
+
 func main() {
-	println("Hello World")
+	args := argparser.New()
+
+	println(args.MusicPath)
 }
