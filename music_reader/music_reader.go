@@ -1,7 +1,10 @@
 package musicreader
 
 import (
+	"fmt"
+	"math/rand"
 	"strings"
+	"time"
 
 	dirreader "github.com/IrvingWash/klezmer/utils/dir_reader"
 )
@@ -20,6 +23,12 @@ func New(path string) *MusicReader {
 	return &MusicReader{
 		Music: music,
 	}
+}
+
+func (mr *MusicReader) GetRandom() {
+	rand.Seed(time.Now().Unix())
+
+	fmt.Println(mr.Music[rand.Intn(len(mr.Music))])
 }
 
 func convertDirContents(dirReader dirreader.DirReader) []string {
