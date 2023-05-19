@@ -1,9 +1,14 @@
 package main
 
-import argparser "github.com/IrvingWash/klezmer/arg_parser"
+import (
+	argparser "github.com/IrvingWash/klezmer/arg_parser"
+	dirreader "github.com/IrvingWash/klezmer/utils/dir_reader"
+)
 
 func main() {
 	args := argparser.New()
 
-	println(args.MusicPath)
+	dirReader := dirreader.New(args.MusicPath)
+
+	dirReader.Read()
 }
