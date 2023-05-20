@@ -31,11 +31,17 @@ func (mr *MusicReader) GetRandom() {
 	fmt.Println(mr.music[rand.Intn(len(mr.music))])
 }
 
+func (mr *MusicReader) GetMusic() []string {
+	return mr.music
+}
+
 func convertDirContents(dirReader dirreader.DirReader) []string {
 	music := make([]string, 0)
 
+	rootPath := dirReader.GetPath()
+
 	for _, dir := range dirReader.GetContents() {
-		if dir == dirReader.GetPath() {
+		if dir == rootPath {
 			continue
 		}
 
@@ -43,7 +49,7 @@ func convertDirContents(dirReader dirreader.DirReader) []string {
 			continue
 		}
 
-		music = append(music, dir)
+		music = append(music, strings.Split(dir, rootPath)[1])
 	}
 
 	return music

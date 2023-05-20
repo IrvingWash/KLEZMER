@@ -10,6 +10,7 @@ import (
 type ArgParser struct {
 	musicPath string
 	decide    bool
+	backup    bool
 }
 
 func New() *ArgParser {
@@ -17,6 +18,7 @@ func New() *ArgParser {
 
 	var musicPath string
 	var decide bool
+	var backup bool
 
 	for _, arg := range args {
 		if strings.HasPrefix(arg, "music-path=") {
@@ -28,11 +30,16 @@ func New() *ArgParser {
 		if arg == "decide" {
 			decide = true
 		}
+
+		if arg == "backup" {
+			backup = true
+		}
 	}
 
 	return &ArgParser{
 		musicPath: musicPath,
 		decide:    decide,
+		backup:    backup,
 	}
 }
 
@@ -42,4 +49,8 @@ func (argParser *ArgParser) GetMusicPath() string {
 
 func (argParser *ArgParser) GetDecide() bool {
 	return argParser.decide
+}
+
+func (argParser *ArgParser) GetBackup() bool {
+	return argParser.backup
 }
